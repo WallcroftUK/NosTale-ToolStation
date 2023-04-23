@@ -1,0 +1,109 @@
+﻿<Window x:Class="LuaToolGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuaToolGUI"
+        mc:Ignorable="d"
+        Title="TimeSpaceLuaTool" Height="566" Width="1082">
+
+    <Grid Height="419" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="108*" />
+            <ColumnDefinition Width="187*" />
+            <ColumnDefinition Width="525*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="LuaCodeTextBox" Margin="20,425,0,-120" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4" />
+        <ListBox x:Name="ObjectivesList" SelectionMode="Multiple" Margin="20,27,204,274" SelectionChanged="ObjectivesList_SelectionChanged" Grid.ColumnSpan="2">
+            <ListBoxItem Content="KillAllMonsters" />
+            <ListBoxItem Content="GoToExit" />
+            <ListBoxItem Content="KillMonsterVnum" />
+            <ListBoxItem Content="KillMonsterAmount" />
+            <ListBoxItem Content="CollectItemVnum" />
+            <ListBoxItem Content="CollectItemAmount" />
+            <ListBoxItem Content="Conversation" />
+            <ListBoxItem Content="InteractObjectsVnum" />
+            <ListBoxItem Content="InteractObjectsAmount" />
+            <ListBoxItem Content="ProtectNPC" />
+        </ListBox>
+        <TextBlock Text="Map ID" Margin="26,208,47,188" />
+        <TextBox x:Name="MapIdTextBox" Margin="91,207,194,188" Text="4014" Grid.ColumnSpan="2" />
+        <TextBlock Text="Map name" Margin="17,249,47,152" />
+        <TextBox x:Name="MapNameTextBox" Margin="91,249,195,0" Text="map_3_2" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+        <TextBlock Text="X coordinate" Margin="12,283,47,118" />
+        <TextBox x:Name="XCoordTextBox" Margin="91,283,194,0" Text="3" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+        <TextBlock Text="Y coordinate" Margin="12,313,47,88" />
+        <TextBox x:Name="YCoordTextBox" Margin="91,317,194,0" Text="2" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+        <TextBlock Text="Task type" Margin="23,353,53,48" />
+        <ComboBox x:Name="TaskTypeComboBox" Margin="91,352,195,46" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="None" Tag="None" IsSelected="True" />
+            <ComboBoxItem Content="KillAllMonsters" Tag="KillAllMonsters" />
+            <ComboBoxItem Content="Survive" Tag="Survive" />
+        </ComboBox>
+        <Button x:Name="AddMapButton" Content="Add Map" Margin="91,389,194,0" VerticalAlignment="Top" Click="AddMapButton_Click" Grid.ColumnSpan="2" />
+        <Button x:Name="AddPortalButton" Content="Add Portal" Margin="95,389,59,10" Click="AddPortalButton_Click" Grid.Column="1" />
+
+        <!-- Portal Properties -->
+        <Label Content="Portal Properties" FontWeight="Bold" Margin="142,161,618,228" Grid.Column="1" Grid.ColumnSpan="2" />
+        <TextBlock Text="Portal Name:" Margin="86,210,61,185" Grid.Column="1" />
+        <TextBox x:Name="PortalNameTextBox" Text="portal_" Grid.Column="1" Margin="164,208,642,188" Grid.ColumnSpan="2" />
+        <Label Content="From:" Margin="81,273,90,112" Grid.Column="1" />
+        <ComboBox x:Name="FromMapComboBox" Grid.Column="1" Margin="139,280,15,118" />
+        <TextBox x:Name="FromXTextBox" Margin="12,285,606,118" Grid.Column="2" />
+        <TextBox x:Name="FromYTextBox" Margin="69,285,546,118" Grid.Column="2" RenderTransformOrigin="0.582,0.472" />
+        <Label Content="To:" Margin="93,308,104,87" Grid.Column="1" />
+        <ComboBox x:Name="ToMapComboBox" Grid.Column="1" Margin="138,313,15,85" />
+        <TextBox x:Name="ToXTextBox" Margin="10,318,604,85" Grid.Column="2" />
+        <TextBox x:Name="ToYTextBox" Margin="69,318,544,85" Grid.Column="2" />
+        <Label Content="Type:" Margin="81,234,109,155" Grid.Column="1" />
+        <ComboBox x:Name="PortalTypeComboBox" Margin="164,239,642,155" Grid.Column="1" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="MapPortal" Tag="-1" IsSelected="True" />
+            <ComboBoxItem Content="TsNormal" Tag="0" />
+            <ComboBoxItem Content="Locked" Tag="1" />
+            <ComboBoxItem Content="Open" Tag="2" />
+            <ComboBoxItem Content="Miniland" Tag="3" />
+            <ComboBoxItem Content="TSEnd" Tag="4" />
+            <ComboBoxItem Content="TSEndClosed" Tag="5" />
+            <ComboBoxItem Content="Exit" Tag="6" />
+            <ComboBoxItem Content="ExitClosed" Tag="7" />
+            <ComboBoxItem Content="Raid" Tag="8" />
+            <ComboBoxItem Content="Effect" Tag="9" />
+            <ComboBoxItem Content="AngelRaid" Tag="10" />
+            <ComboBoxItem Content="DemonRaid" Tag="11" />
+            <ComboBoxItem Content="TimeSpace" Tag="12" />
+            <ComboBoxItem Content="ShopTeleport" Tag="20" />
+        </ComboBox>
+        <Label Content="Minimap Orientation:" Margin="72,346,25,43" Grid.Column="1" />
+        <ComboBox x:Name="MinimapOrientationComboBox" Margin="215,352,592,46" Grid.Column="1" Grid.ColumnSpan="2">
+            <ComboBoxItem Content="North" Tag="North" IsSelected="True" />
+            <ComboBoxItem Content="East" Tag="East" />
+            <ComboBoxItem Content="South" Tag="South" />
+            <ComboBoxItem Content="West" Tag="West" />
+        </ComboBox>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="230,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"><Run Language="en-gb" Text="X:" /></TextBlock>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="228,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"><Run Language="en-gb" Text="X:" /></TextBlock>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="56,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-gb" Text="Y" /><Run Text=":" /></TextBlock>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="56,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-gb" Text="Y" /><Run Text=":" /></TextBlock>
+        <Label Content="TimeSpaceObjectives" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" />
+        <Label Content="Portal Properties" FontWeight="Bold" Margin="29,161,213,228" Grid.ColumnSpan="2" />
+
+        <Button x:Name="PopulateButton" Content="Populate Maps with Portals" Click="PopulateButton_Click" Grid.Column="1" Margin="183,389,546,10" Grid.ColumnSpan="2" />
+        <Label Content="TimeSpace ID:" Grid.Column="2" Margin="535,6,30,386" />
+        <TextBox x:Name="tsIDBox" Grid.Column="2" Margin="628,12,19,391" Grid.ColumnSpan="2" />
+        <TextBlock Text="Spawn Location:" Grid.Column="2" Margin="528,31,30,370" />
+        <ComboBox x:Name="spawnMapComboBox" ItemsSource="{Binding MapNames}" Margin="628,33,19,367" Grid.Column="2" Grid.ColumnSpan="2" />
+        <TextBox x:Name="spawnXTextBox" Margin="23,57,13,344"  Grid.Column="3" />
+        <TextBox x:Name="spawnYTextBox" Margin="622,57,3,344"  Grid.Column="2" />
+        <TextBlock Text="Lives:" Grid.Column="2" Margin="584,80,40,317" />
+        <TextBox x:Name="livesTextBox" Margin="628,80,18,321" Text="4" Grid.Column="2" Grid.ColumnSpan="2" />
+        <TextBlock Text="Duration (seconds):" Grid.Column="2" Margin="510,105,38,298" />
+        <TextBox x:Name="durationTextBox" Margin="628,103,18,296" Text="500" Grid.Column="2" Grid.ColumnSpan="2" />
+        <TextBlock Text="Bonus Point Item Drop Chance:" Grid.Column="2" Margin="447,128,40,270" />
+        <TextBox x:Name="bonusChanceTextBox" Margin="628,128,18,270" Text="5000" Grid.Column="2" Grid.ColumnSpan="2" />
+        <Button x:Name="AddEndOfScriptButton" Content="Add End of Script" Click="AddEndOfScriptButton_Click" Margin="572,161,19,238" Grid.Column="2" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="607,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-gb" Text="X:" /></TextBlock>
+        <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="9,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="en-gb" Text="Y" /><Run Text=":" /></TextBlock>
+        <Button Content="Add Monsters" Click="AddMonstersButton_Click" Grid.Column="2" Margin="124,389,395,10" />
+    </Grid>
+</Window>
