@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuaToolLibs", "..\LuaToolTimeSpaces\LuaToolLibs.csproj", "{4271663E-32ED-48CF-BEE9-BA8D60F69DC4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuaToolGUI", "LuaToolGUI\LuaToolGUI.csproj", "{1DD3F303-CFD4-4A9E-BAAC-EE83FC503F6C}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4271663E-32ED-48CF-BEE9-BA8D60F69DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4271663E-32ED-48CF-BEE9-BA8D60F69DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4271663E-32ED-48CF-BEE9-BA8D60F69DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4271663E-32ED-48CF-BEE9-BA8D60F69DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DD3F303-CFD4-4A9E-BAAC-EE83FC503F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1DD3F303-CFD4-4A9E-BAAC-EE83FC503F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD3F303-CFD4-4A9E-BAAC-EE83FC503F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
