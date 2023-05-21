@@ -46,8 +46,10 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 This project is licensed under the [MIT License](LICENSE).
 
+<!-- 
 ## Acknowledgments
 
 - [Library Name](Library Link): This project utilizes the functionality provided by the Library Name to achieve XYZ.
 - [Tutorial](Tutorial Link): The implementation of feature ABC was inspired by the tutorial found at Tutorial Link.
 - Special thanks to [Contributor Name](Contributor GitHub Profile) for their valuable contributions and support throughout the development of this project.
+-->
