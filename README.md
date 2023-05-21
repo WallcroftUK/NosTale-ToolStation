@@ -9,7 +9,7 @@ TimeSpace Tool for making Lua scripts for Vanosilla.
 Whether you're a game developer, modder, or enthusiast, LuaTimeSpaceTool empowers you to create engaging TimeSpace scripts with ease. Stay organized, save time, and unleash your creativity with this essential tool.
 
 
-[![Workflow Status](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/build.yml)
+[![Workflow Status](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/dotnet-desktop.yml)
 ![Language](https://img.shields.io/github/languages/top/WallcroftUK/LuaTimeSpaceTool)
 ![GitHub Issues](https://img.shields.io/github/issues/WallcroftUK/LuaTimeSpaceTool)
 ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/WallcroftUK/LuaTimeSpaceTool)
