@@ -1,6 +1,15 @@
+<div align="center">
+  <img src="https://github.com/WallcroftUK/LuaTimeSpaceTool/raw/main/assets/logo.png" alt="LuaTimeSpaceTool Logo" width="200">
+</div>
+
 # LuaTimeSpaceTool
 
 TimeSpace Tool for making Lua scripts for Vanosilla.
+
+[![Workflow Status](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/WallcroftUK/LuaTimeSpaceTool/actions/workflows/build.yml)
+![Language](https://img.shields.io/github/languages/top/WallcroftUK/LuaTimeSpaceTool)
+![GitHub Issues](https://img.shields.io/github/issues/WallcroftUK/LuaTimeSpaceTool)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/WallcroftUK/LuaTimeSpaceTool)
 
 ## Roadmap
 
@@ -26,9 +35,17 @@ TimeSpace Tool for making Lua scripts for Vanosilla.
 
 ## Getting Started
 
-To get started with LuaTimeSpaceTool, follow these steps:
+### Prerequisites
 
-1. Clone the repository: `git clone https://github.com/WallcroftUK/LuaTimeSpaceTool.git`
+- .NET Core SDK 7.0.x or later
+
+### Installation
+
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/WallcroftUK/LuaTimeSpaceTool.git
+   ```
 2. Open the solution in Visual Studio.
 3. Build and run the project.
 
