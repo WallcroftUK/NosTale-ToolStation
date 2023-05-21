@@ -1,0 +1,116 @@
+﻿<Window x:Class="LuaToolGUI.PortalDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Portal Details" Height="226" Width="600">
+    <Window.Resources>
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0078D7" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#0078D7" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Margin" Value="0,0,10,5" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005EA6" />
+                                <Setter Property="BorderBrush" Value="#005EA6" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#002D5A" />
+                                <Setter Property="BorderBrush" Value="#002D5A" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20,20,20,0" Background="#F1F1F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Portal Properties -->
+        <Label Content="Portal Properties" FontWeight="Bold" Grid.Row="0" Margin="0,0,0,10" />
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Portal Name:" Width="100" VerticalAlignment="Center" />
+                <TextBox x:Name="PortalNameTextBox" Text="portal_" Width="72" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="From:" Width="100" VerticalAlignment="Center" />
+                <ComboBox x:Name="FromMapComboBox" />
+                <TextBlock Text="X:" Width="20" VerticalAlignment="Center" Margin="10,0,0,0" />
+                <TextBox x:Name="FromXTextBox" Width="50" />
+                <TextBlock Text="Y:" Width="20" VerticalAlignment="Center" Margin="10,0,0,0" />
+                <TextBox x:Name="FromYTextBox" Width="50" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="To:" Width="100" VerticalAlignment="Center" />
+                <ComboBox x:Name="ToMapComboBox" />
+                <TextBlock Text="X:" Width="20" VerticalAlignment="Center" Margin="10,0,0,0" />
+                <TextBox x:Name="ToXTextBox" Width="50" />
+                <TextBlock Text="Y:" Width="20" VerticalAlignment="Center" Margin="10,0,0,0" />
+                <TextBox x:Name="ToYTextBox" Width="50" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Type:" Width="100" VerticalAlignment="Center" />
+                <ComboBox x:Name="PortalTypeComboBox">
+                    <ComboBoxItem Content="MapPortal" Tag="-1" IsSelected="True" />
+                    <ComboBoxItem Content="TsNormal" Tag="0" />
+                    <ComboBoxItem Content="Locked" Tag="1" />
+                    <ComboBoxItem Content="Open" Tag="2" />
+                    <ComboBoxItem Content="Miniland" Tag="3" />
+                    <ComboBoxItem Content="TSEnd" Tag="4" />
+                    <ComboBoxItem Content="TSEndClosed" Tag="5" />
+                    <ComboBoxItem Content="Exit" Tag="6" />
+                    <ComboBoxItem Content="ExitClosed" Tag="7" />
+                    <ComboBoxItem Content="Raid" Tag="8" />
+                    <ComboBoxItem Content="Effect" Tag="9" />
+                    <ComboBoxItem Content="AngelRaid" Tag="10" />
+                    <ComboBoxItem Content="DemonRaid" Tag="11" />
+                    <ComboBoxItem Content="TimeSpace" Tag="12" />
+                    <ComboBoxItem Content="ShopTeleport" Tag="20" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Minimap Orientation:" Width="100" VerticalAlignment="Center" />
+                <ComboBox x:Name="MinimapOrientationComboBox" Width="83">
+                    <ComboBoxItem Content="North" Tag="North" IsSelected="True" />
+                    <ComboBoxItem Content="East" Tag="East" />
+                    <ComboBoxItem Content="South" Tag="South" />
+                    <ComboBoxItem Content="West" Tag="West" />
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,0,0" Grid.RowSpan="5" Width="206">
+            <Button x:Name="AddPortalButton" Click="AddPortalButton_Click" Content="Add Portal" Style="{StaticResource ModernButtonStyle}" />
+            <Button x:Name="PopulateButton" Click="PopulateButton_Click" Content="Populate Maps with Portals" Style="{StaticResource ModernButtonStyle}" />
+        </StackPanel>
+    </Grid>
+</Window>

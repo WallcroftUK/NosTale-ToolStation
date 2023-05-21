@@ -1,0 +1,80 @@
+﻿<Window x:Class="LuaToolGUI.MapDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Map Details" Height="589" Width="524">
+    <Grid Height="584" VerticalAlignment="Center" Background="#F1F1F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="6.14" />
+            <RowDefinition Height="14.86" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Map ID" Margin="0,10,234,0" Height="17" VerticalAlignment="Top" HorizontalAlignment="Right" Width="265" />
+        <TextBox x:Name="MapIdTextBox" Margin="0,27,234,0" Text="4014" Height="18" VerticalAlignment="Top" HorizontalAlignment="Right" Width="265" />
+
+        <TextBlock Margin="0,10,234,0" Grid.Row="2" HorizontalAlignment="Right" Width="265" Height="14" VerticalAlignment="Top" Grid.RowSpan="2" ><Run Text="Grid X coordinate" /></TextBlock>
+        <TextBox x:Name="XCoordTextBox" Margin="0,29,234,0" Grid.Row="2" Text="3" HorizontalAlignment="Right" Width="265" Height="23" VerticalAlignment="Top" Grid.RowSpan="2" />
+
+        <TextBlock Margin="0,0,234,29" Grid.Row="3" HorizontalAlignment="Right" Width="265" Height="22" VerticalAlignment="Bottom" ><Run Text="Grid Y coordinate" /></TextBlock>
+        <TextBox x:Name="YCoordTextBox" Margin="0,57,234,0" Grid.Row="3" Text="2" HorizontalAlignment="Right" Width="265" Height="18" VerticalAlignment="Top" />
+
+        <TextBlock Text="Task type" Margin="0,77,234,0" Grid.Row="3" HorizontalAlignment="Right" Width="265" Height="16" VerticalAlignment="Top" Grid.RowSpan="3" />
+        <ComboBox x:Name="TaskTypeComboBox" Margin="25,0,0,0" Grid.Row="7" Height="21" HorizontalAlignment="Left" Width="265" VerticalAlignment="Center">
+            <ComboBoxItem Content="None" Tag="None" IsSelected="True" />
+            <ComboBoxItem Content="KillAllMonsters" Tag="KillAllMonsters" />
+            <ComboBoxItem Content="Survive" Tag="Survive" />
+        </ComboBox>
+
+        <ScrollViewer Grid.Row="8" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" Width="504" Margin="0,5,0,0" Height="343" VerticalAlignment="Top">
+            <Grid x:Name="DynamicGrid" Margin="10">
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Content" Value="" />
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Width" Value="20" />
+                        <Setter Property="Height" Value="20" />
+                        <EventSetter Event="Click" Handler="MapCell_Click" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
+
+        <Button x:Name="AddMapButton" Click="AddMapButton_Click" Content="Add Map" Margin="365,45,0,19" Grid.Row="2"
+                Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                Padding="10" FontSize="12" HorizontalAlignment="Left" Width="100" Grid.RowSpan="2" />
+    </Grid>
+
+</Window>

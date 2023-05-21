@@ -3,6 +3,7 @@
 /// </summary>
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace LuaToolGUI
 {
@@ -30,7 +31,22 @@ namespace LuaToolGUI
             int facing = int.Parse(facingTextBox.Text);
             int level = int.Parse(mobLevelTextBox.Text);
 
-            string newMonster = "Monster.CreateWithVnum(" + monsterName + ").At(" + x + ", " + y + ").Facing(" + facing + ").WithCustomLevel(" + level + "),";
+            string specialType = ((ComboBoxItem)specialTypeComboBox.SelectedItem).Content.ToString();
+            string newMonster;
+
+            if (specialType == "Target")
+            {
+                newMonster = "Monster.CreateWithVnum(" + monsterName + ").At(" + x + ", " + y + ").Facing(" + facing + ").AsTarget(),";
+            }
+            else if (specialType == "KillCount")
+            {
+                int killCount = int.Parse(killCountTextBox.Text);
+                newMonster = "Monster.CreateWithVnum(" + monsterName + ").At(" + x + ", " + y + ").Facing(" + facing + ").SpawnAfterMobsKilled(" + killCount + "),";
+            }
+            else
+            {
+                newMonster = "Monster.CreateWithVnum(" + monsterName + ").At(" + x + ", " + y + ").Facing(" + facing + ").WithCustomLevel(" + level + "),";
+            }
 
             // Check if the map already has monsters in the script
             int mapIndex = scriptTextBox.Text.IndexOf(mapName);

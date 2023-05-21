@@ -2,7 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Add Monsters to Map" Height="350" Width="525">
-    <Grid>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#0078D7" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="MinWidth" Value="100" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10" Background="#F1F1F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -11,26 +25,37 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Map:" VerticalAlignment="Center" />
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="mapComboBox" />
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="Monster Vnum:" VerticalAlignment="Center" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" x:Name="mobVnumTextBox" />
-        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="Position X:" VerticalAlignment="Center" />
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" x:Name="positionXTextBox" />
-        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Text="Position Y:" VerticalAlignment="Center" />
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" x:Name="positionYTextBox" />
-        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Text="Facing:" VerticalAlignment="Center" />
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" x:Name="facingTextBox" />
-        <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Text="Level:" VerticalAlignment="Center" />
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" x:Name="mobLevelTextBox" />
-        <Button Grid.Row="6" Margin="343,0,10,0" Content="Add" Click="AddMonsterButton_Click" Grid.Column="1" Height="20" VerticalAlignment="Center" />
-        <Button Grid.Row="6" Grid.Column="0" Margin="5" Content="Close" Click="CloseButton_Click" />
-        <Button Grid.Row="6" Grid.Column="1" Margin="140,5,213,5" Content="Save/Close" Click="SaveCloseButton_Click" />
-        <TextBox x:Name="scriptTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="5,39,5,-122" Grid.Row="6" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0" Text="Map:" VerticalAlignment="Center" />
+        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="mapComboBox" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="0" Text="Monster Vnum:" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="mobVnumTextBox" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0" Text="Position X:" VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="positionXTextBox" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="0" Text="Position Y:" VerticalAlignment="Center" />
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="positionYTextBox" />
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="0" Text="Facing:" VerticalAlignment="Center" />
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="facingTextBox" />
+        <TextBlock Grid.Row="5" Grid.Column="0" Margin="0" Text="Level:" VerticalAlignment="Center" />
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="mobLevelTextBox" />
+        <TextBlock Grid.Row="7" Grid.Column="0" Margin="0,2,424,0" Text="Kill Count:" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+        <TextBox Grid.Row="6" x:Name="killCountTextBox" Height="20" Text="only if killcount is selected" VerticalAlignment="Top" Margin="0,20,0,0" Grid.Column="1" Grid.RowSpan="2" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Margin="0" Text="Special Type:" VerticalAlignment="Center" />
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="specialTypeComboBox">
+            <ComboBoxItem Content="None" />
+            <ComboBoxItem Content="Target" />
+            <ComboBoxItem Content="KillCount" />
+        </ComboBox>
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Height="90" VerticalAlignment="Bottom" Margin="0,0,88,-12">
+            <Button Content="Add" Click="AddMonsterButton_Click" Height="43" Width="88" />
+            <Button Content="Close" Click="CloseButton_Click" Height="43" />
+            <Button Content="Save/Close" Click="SaveCloseButton_Click" Margin="10,0,0,0" Height="43" />
+        </StackPanel>
+        <TextBox x:Name="scriptTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.Row="7" Height="74" VerticalAlignment="Bottom" Margin="-1,0,0,59" />
     </Grid>
 </Window>
