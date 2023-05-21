@@ -86,22 +86,3 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    # Sign the application
-    - name: Sign the application
-      run: |
-        $pfx_cert = Get-Content '.\SigningCertificate.pfx' -Encoding Byte
-        [System.Convert]::ToBase64String($pfx_cert) | Out-File 'SigningCertificate_Encoded.txt'
-
-    # Package the application
-    - name: Package the application
-      run: |
-        echo "Packaging the application..."
-        # Add commands to package the application into the desired directory
-
-    # Upload artifacts
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: packaged-application
-        path: ./bin/Release  # Replace with the actual path to the packaged application
-
