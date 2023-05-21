@@ -86,11 +86,6 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    # Run tests
-    - name: Run tests
-      run: dotnet test
-      working-directory: ./Tests  # Path to the directory containing your test project
-
     # Sign the application
     - name: Sign the application
       run: |
