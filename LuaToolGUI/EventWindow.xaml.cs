@@ -56,6 +56,7 @@ namespace LuaToolGUI
             EventName eventName = (EventName)EventNameComboBox.SelectedItem;
             MapTaskType mapTaskType = (MapTaskType)MapTaskTypeComboBox.SelectedItem;
             string mapName = EventMapNameComboBox.SelectedValue.ToString();
+            string fromPortal = PortalNameComboBox.Text;
 
             // Check if we are adding events to the same map and task type
             if (mapName == currentMapName && mapTaskType == currentMapTaskType)
@@ -64,7 +65,7 @@ namespace LuaToolGUI
                 if (eventName == EventName.OpenPortal)
                 {
                     // Handle Event.OpenPortal scenario
-                    currentMapLuaCode.AppendLine($"    Event.OpenPortal({{fromPortal}}),");
+                    currentMapLuaCode.AppendLine($"    Event.{eventName}({fromPortal}),");
                 }
                 else if (eventName == EventName.AddTime || eventName == EventName.RemoveTime)
                 {
@@ -75,18 +76,18 @@ namespace LuaToolGUI
                 else if (eventName == EventName.TryStartTaskForMap)
                 {
                     // Handle Event.TryStartTaskForMap scenario
-                    currentMapLuaCode.AppendLine($"    Event.TryStartTaskForMap({mapName}),");
+                    currentMapLuaCode.AppendLine($"    Event.{eventName}({mapName}),");
                 }
                 else if (eventName == EventName.DespawnAllMobsInRoom)
                 {
                     // Handle Event.DespawnAllMobsInRoom scenario
-                    currentMapLuaCode.AppendLine($"    Event.DespawnAllMobsInRoom({mapName}),");
+                    currentMapLuaCode.AppendLine($"    Event.{eventName}({mapName}),");
                 }
                 else if (eventName == EventName.FinishTimeSpace)
                 {
                     // Handle Event.FinishTimeSpace scenario
                     TimeSpaceFinishType finishType = (TimeSpaceFinishType)FinishTypeComboBox.SelectedItem;
-                    currentMapLuaCode.AppendLine($"    Event.FinishTimeSpace(TimeSpaceFinishType.{finishType}),");
+                    currentMapLuaCode.AppendLine($"    Event.{eventName}(TimeSpaceFinishType.{finishType}),");
                 }
             }
 //            map_map_3_1.OnMapJoin({
@@ -106,10 +107,10 @@ namespace LuaToolGUI
                     LuaCode = new StringBuilder()
                 };
                 newEvent.LuaCode.AppendLine($"{mapName}.{mapTaskType}({{");
-                if (eventName == EventName.OpenPortal)
+                if (eventName == EventName.OpenPortal )
                 {
                     // Handle Event.OpenPortal scenario
-                    newEvent.LuaCode.AppendLine($"    Event.OpenPortal({{fromPortal}}),");
+                    newEvent.LuaCode.AppendLine($"    Event.OpenPortal({fromPortal}),");
                 }
                 else if (eventName == EventName.AddTime || eventName == EventName.RemoveTime)
                 {
@@ -190,7 +191,7 @@ namespace LuaToolGUI
             {
                 foreach (MapEvent mapEvent in mapEvents)
                 {
-                    eventLuaCode.AppendLine($"--- Map {mapEvent.MapName}");
+                    eventLuaCode.AppendLine($"--- {mapEvent.MapName}");
                     eventLuaCode.Append(mapEvent.LuaCode);
                     eventLuaCode.AppendLine("---");
                 }
