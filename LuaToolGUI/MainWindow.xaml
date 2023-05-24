@@ -13,41 +13,31 @@
             <ColumnDefinition Width="525*" />
             <ColumnDefinition Width="50*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="LuaCodeTextBox" Margin="20,425,0,-120" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4" />
-        <ListBox x:Name="ObjectivesList" SelectionMode="Multiple" Margin="52,172,172,129" SelectionChanged="ObjectivesList_SelectionChanged" Grid.ColumnSpan="2">
-            <ListBoxItem Content="KillAllMonsters" />
-            <ListBoxItem Content="GoToExit" />
-            <ListBoxItem Content="KillMonsterVnum" />
-            <ListBoxItem Content="KillMonsterAmount" />
-            <ListBoxItem Content="CollectItemVnum" />
-            <ListBoxItem Content="CollectItemAmount" />
-            <ListBoxItem Content="Conversation" />
-            <ListBoxItem Content="InteractObjectsVnum" />
-            <ListBoxItem Content="InteractObjectsAmount" />
-            <ListBoxItem Content="ProtectNPC" />
-        </ListBox>
+        <TextBox x:Name="LuaCodeTextBox" Margin="10,266,10,-96" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4" />
+        <ListBox x:Name="ObjectivesList" SelectionMode="Multiple" Margin="10,36,214,265" SelectionChanged="ObjectivesList_SelectionChanged" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedObjectives}" />
 
-        <Label Content="TimeSpaceObjectives" HorizontalAlignment="Left" Margin="36,145,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" Grid.ColumnSpan="2" />
+
+        <Label Content="TimeSpaceObjectives" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" Grid.ColumnSpan="2" RenderTransformOrigin="0.477,0.31" />
 
         <Button x:Name="OpenTimeSpaceWindow" Content="Open TimeSpace Window" Click="OpenTimeSpaceWindow_Click"
                     Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
-                    Padding="10" FontSize="10" Width="143" HorizontalAlignment="Left" Margin="137,13,0,370" Grid.Column="2" />
+                    Padding="10" FontSize="10" Width="143" HorizontalAlignment="Left" Margin="327,13,0,370" Grid.Column="2" />
 
         <Button x:Name="OpenMapDetailsButton" Content="Open Map Details" Click="OpenMapDetailsButton_Click"
                     Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
-                    Padding="10" FontSize="10" Width="123" HorizontalAlignment="Left" Margin="26,13,0,370" Grid.ColumnSpan="2" />
+                    Padding="10" FontSize="10" Width="123" HorizontalAlignment="Left" Margin="82,13,0,370" Grid.Column="1" />
 
         <Button x:Name="OpenPortalDetailsButton" Content="Open Portal Details" Click="OpenPortalDetailsButton_Click"
                     HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
-                    Padding="10" FontSize="10" Margin="23,13,0,370" Width="110" Grid.Column="1" />
+                    Padding="10" FontSize="10" Margin="213,13,0,370" Width="110" Grid.Column="1" Grid.ColumnSpan="2" />
 
         <Button x:Name="OpenEventWindowButton" Content="Open Event Details" Click="OpenEventWindowButton_Click"
                     HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
-                    Padding="10" FontSize="10" Margin="146,13,0,370" Grid.Column="1" Width="108" Grid.ColumnSpan="2" />
+                    Padding="10" FontSize="10" Margin="103,13,0,370" Grid.Column="2" Width="108" />
 
         <Button Content="Add Monsters" Click="AddMonstersButton_Click"
                     HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
-                    Padding="10" FontSize="10" Margin="34,13,0,370" Grid.Column="2" Width="91" RenderTransformOrigin="0.5,0.5">
+                    Padding="10" FontSize="10" Margin="224,13,0,370" Grid.Column="2" Width="91" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -57,5 +47,12 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <Button x:Name="CleanButton" Content="Clean" Margin="0,13,31,370"
+        Click="CleanButton_Click" HorizontalAlignment="Right"
+        Width="120" FontSize="16" Background="#CC0000" Foreground="White" Grid.Column="2" Grid.ColumnSpan="2" />
+
+        <Button x:Name="EasterEggButton" Content="" Click="EasterEggButton_Click" Grid.Column="3" Margin="52,0,0,410" />
+        <Image Grid.Column="2" HorizontalAlignment="Left" Height="214" Margin="59,54,0,0" VerticalAlignment="Top" Width="230" Source="/logo.png" Stretch="UniformToFill"/>
+
     </Grid>
 </Window>

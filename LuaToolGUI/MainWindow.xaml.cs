@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LuaToolGUI.enums;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,11 +18,21 @@ namespace LuaToolGUI
         private ObservableCollection<string> mapNames = new ObservableCollection<string>();
 
         private Dictionary<string, Tuple<string, string>> portalConnections = new Dictionary<string, Tuple<string, string>>();
+        public List<TimeSpaceObjectiveType> SelectedObjectives { get; set; }
 
+        private MapDetailsWindow mapDetailsWindow;
+        private PortalDetailsWindow portalDetailsWindow;
+        private AddMonstersWindow addMonstersWindow;
+        private TimeSpaceWindow timeSpaceWindow;
+        private EventWindow eventWindow;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+
+            SelectedObjectives = Enum.GetValues(typeof(TimeSpaceObjectiveType))
+                                     .OfType<TimeSpaceObjectiveType>()
+                                     .ToList();
         }
 
         private void ObjectivesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,65 +55,62 @@ namespace LuaToolGUI
             luaCode.AppendLine("");
             luaCode.AppendLine("local objectives = TimeSpaceObjective.Create()");
 
-            foreach (ListBoxItem item in ObjectivesList.SelectedItems)
+            foreach (var objective in ObjectivesList.SelectedItems)
             {
-                switch (item.Content.ToString())
+                if (objective is TimeSpaceObjectiveType objectiveType)
                 {
-                    case "KillAllMonsters":
-                        luaCode.AppendLine(".WithKillAllMonsters()");
-                        break;
-
-                    case "GoToExit":
-                        luaCode.AppendLine(".WithGoToExit()");
-                        break;
-
-                    case "KillMonsterVnum":
-                        luaCode.AppendLine(".WithKillMob(vnum, amount)");
-                        break;
-
-                    case "KillMonsterAmount":
-                        luaCode.AppendLine(".WithKillMonsterAmount(amount)");
-                        break;
-
-                    case "CollectItemVnum":
-                        luaCode.AppendLine(".WithCollectItem(vnum, amount)");
-                        break;
-
-                    case "CollectItemAmount":
-                        luaCode.AppendLine(".WithCollectItemAmount(amount)");
-                        break;
-
-                    case "Conversation":
-                        luaCode.AppendLine(".WithConversations(amount)");
-                        break;
-
-                    case "InteractObjectsVnum":
-                        luaCode.AppendLine(".WithInteractObjects(vnum, amount)");
-                        break;
-
-                    case "InteractObjectsAmount":
-                        luaCode.AppendLine(".WithInteractObjectsAmount(amount)");
-                        break;
-
-                    case "ProtectNPC":
-                        luaCode.AppendLine(".WithProtectNPC()");
-                        break;
+                    switch (objectiveType)
+                    {
+                        case TimeSpaceObjectiveType.KillAllMonsters:
+                            luaCode.AppendLine(".WithKillAllMonsters()");
+                            break;
+                        case TimeSpaceObjectiveType.GoToExit:
+                            luaCode.AppendLine(".WithGoToExit()");
+                            break;
+                        case TimeSpaceObjectiveType.KillMonsterVnum:
+                            luaCode.AppendLine(".WithKillMob(vnum, amount)");
+                            break;
+                        case TimeSpaceObjectiveType.KillMonsterAmount:
+                            luaCode.AppendLine(".WithKillMonsterAmount(amount)");
+                            break;
+                        case TimeSpaceObjectiveType.CollectItemVnum:
+                            luaCode.AppendLine(".WithCollectItem(vnum, amount)");
+                            break;
+                        case TimeSpaceObjectiveType.CollectItemAmount:
+                            luaCode.AppendLine(".WithCollectItemAmount(amount)");
+                            break;
+                        case TimeSpaceObjectiveType.Conversation:
+                            luaCode.AppendLine(".WithConversations(amount)");
+                            break;
+                        case TimeSpaceObjectiveType.InteractObjectsVnum:
+                            luaCode.AppendLine(".WithInteractObjects(vnum, amount)");
+                            break;
+                        case TimeSpaceObjectiveType.InteractObjectsAmount:
+                            luaCode.AppendLine(".WithInteractObjectsAmount(amount)");
+                            break;
+                        case TimeSpaceObjectiveType.ProtectNPC:
+                            luaCode.AppendLine(".WithProtectNPC()");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
 
             LuaCodeTextBox.Text = luaCode.ToString();
         }
 
+
         private void OpenMapDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            MapDetailsWindow mapDetailsWindow = new MapDetailsWindow(mapNames, LuaCodeTextBox, ObjectivesList);
+            mapDetailsWindow = new MapDetailsWindow(mapNames, LuaCodeTextBox, ObjectivesList);
             mapDetailsWindow.Show();
         }
 
         private void OpenPortalDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             // Create an instance of PortalDetailsWindow
-            PortalDetailsWindow portalDetailsWindow = new PortalDetailsWindow(LuaCodeTextBox, portalConnections);
+            portalDetailsWindow = new PortalDetailsWindow(LuaCodeTextBox, portalConnections);
 
             // Set the item source for FromMapComboBox and ToMapComboBox
             portalDetailsWindow.FromMapComboBoxItemsSource = mapNames;
@@ -113,7 +122,7 @@ namespace LuaToolGUI
 
         private void AddMonstersButton_Click(object sender, RoutedEventArgs e)
         {
-            AddMonstersWindow addMonstersWindow = new AddMonstersWindow(mapNames);
+            addMonstersWindow = new AddMonstersWindow(mapNames);
             if (addMonstersWindow.ShowDialog() == true)
             {
                 string script = LuaCodeTextBox.Text;
@@ -133,8 +142,32 @@ namespace LuaToolGUI
 
         private void OpenTimeSpaceWindow_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpaceWindow timeSpaceWindow = new TimeSpaceWindow(LuaCodeTextBox, mapNames);
+            timeSpaceWindow = new TimeSpaceWindow(LuaCodeTextBox, mapNames);
             timeSpaceWindow.Show();
+        }
+        private void EasterEggButton_Click(object sender, RoutedEventArgs e)
+        {
+            EasterEggWindow easterEggWindow = new EasterEggWindow();
+            easterEggWindow.ShowDialog();
+            MessageBox.Show("Cepik Was Here", "Easter Egg");
+        }
+        private void CleanButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear the mapNames collection
+            mapNames.Clear();
+
+            // Clear the portalConnections dictionary
+            portalConnections.Clear();
+
+            // Clear the cellStates dictionary
+            // Assuming you have an instance of the MapDetailsWindow called mapDetailsWindow
+            mapDetailsWindow.ClearCellStates();
+
+            //Clear the events dictionary
+            eventWindow.CleanEvents();
+
+            // Clear the main Lua code textbox
+            LuaCodeTextBox.Clear();
         }
     }
 }

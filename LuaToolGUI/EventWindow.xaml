@@ -1,44 +1,70 @@
 ﻿<Window x:Class="LuaToolGUI.EventWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Event Window" Height="400" Width="600">
-    <Grid Margin="20" Background="#F1F1F1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+        Title="Event Window" Height="476" Width="630">
 
-        <Label Content="Event Name:" Grid.Row="0" FontSize="16" />
-        <ComboBox x:Name="EventNameComboBox" Grid.Row="0" Margin="0,5"
-                  SelectionChanged="EventNameComboBox_SelectionChanged"
-                  FontSize="14" />
-
-        <StackPanel Grid.Row="1" Margin="0,10" Visibility="{Binding ElementName=EventNameComboBox,
-                                                                     Path=SelectedItem.Tag,
-                                                                     Converter={x:Null}}">
+    <Grid Background="#F1F1F1" Height="445" VerticalAlignment="Top">
+        <ComboBox x:Name="MapTaskTypeComboBox" Grid.Row="0" Margin="8,90,0,330"
+                  FontSize="14" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="185" >
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.735"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.987"/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+        </ComboBox>
+        <StackPanel Margin="10,169,0,207" HorizontalAlignment="Left" Width="250">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EventNameComboBox, Path=SelectedItem.Tag}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
             <Label Content="Map Name:" FontSize="16" />
-            <ComboBox x:Name="MapNameComboBox" Height="31" VerticalAlignment="Top"
-                      FontSize="14" />
+            <ComboBox x:Name="MapNameComboBox" FontSize="14" Width="184" HorizontalAlignment="Left" />
         </StackPanel>
-
-        <StackPanel Grid.Row="2" Margin="0,10" Visibility="{Binding ElementName=EventNameComboBox,
-                                                                     Path=SelectedItem.Tag,
-                                                                     Converter={x:Null}}">
+        <Label Content="Event Map Name:" FontSize="16" Margin="10,0,-10,415" />
+        <ComboBox x:Name="EventMapNameComboBox"
+                  FontSize="14" Margin="10,30,0,390" HorizontalAlignment="Left" Width="184" />
+        <StackPanel Margin="11,225,0,151" HorizontalAlignment="Left" Width="198">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EventNameComboBox, Path=SelectedItem.Tag}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
             <Label Content="Portal Name:" FontSize="16" />
-            <ComboBox x:Name="PortalNameComboBox" Height="31" VerticalAlignment="Top"
-                      FontSize="14" />
+            <ComboBox x:Name="PortalNameComboBox" Height="27" FontSize="14" Width="183" HorizontalAlignment="Left" />
         </StackPanel>
 
-        <Label Content="Map Task Type:" Grid.Row="3" Margin="0,5,0,15" FontSize="16" />
-        <ComboBox x:Name="MapTaskTypeComboBox" Grid.Row="3" VerticalAlignment="Top"
-                  FontSize="14" Margin="0,36,0,0" Grid.RowSpan="2" />
+        <Label Content="Event Name:" Margin="10,112,56,301" FontSize="16" />
+        <ComboBox x:Name="EventNameComboBox" VerticalAlignment="Top"
+                  FontSize="14" Margin="10,144,0,0" SelectionChanged="EventNameComboBox_SelectionChanged" Height="25" HorizontalAlignment="Left" Width="184" />
+        <Button x:Name="AddEventButton" Content="Add Event" Margin="120,386,0,0"
+                Click="AddEventButton_Click" HorizontalAlignment="Left"
+                Width="120" FontSize="16" Background="#007ACC" Foreground="White" Height="40" VerticalAlignment="Top" />
+        <Label Content="Map Task Type:" Grid.Row="0" FontSize="16" Margin="10,55,-11,358" />
+        <Label Content="Finish Type Type:" Grid.Row="0" FontSize="16" Margin="9,278,56,135" />
+        <ComboBox x:Name="FinishTypeComboBox" Margin="11,310,0,112" HorizontalAlignment="Left" Width="183" />
+        <TextBox x:Name="TimeTextBox" Width="100" Height="30" Margin="94,347,0,0" Text="{Binding TimeValue}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button x:Name="CloseMapButton" Content="Close Map" Margin="10,386,0,0"
+                Click="CloseMapButton_Click" HorizontalAlignment="Left"
+                Width="100" FontSize="16" Background="#007ACC" Foreground="White" Height="40" VerticalAlignment="Top" />
+        <TextBox x:Name="eventLuaCodeTextBox" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="265,15,51,68" />
+        <Button x:Name="SaveButton" Content="SaveAndClose" Margin="482,386,0,0"
+        Click="SaveButton_Click" HorizontalAlignment="Left"
+        Width="120" FontSize="16" Background="#007ACC" Foreground="White" Height="40" VerticalAlignment="Top" />
+        <Label Content="Time:" Grid.Row="0" FontSize="16" Margin="9,345,541,0" Height="32" VerticalAlignment="Top" />
 
-        <Button x:Name="AddEventButton" Content="Add Event" Grid.Row="4" Margin="0,20,0,0"
-                Click="AddEventButton_Click" HorizontalAlignment="Center"
-                Width="120" Height="40" FontSize="16" Background="#007ACC" Foreground="White" />
     </Grid>
 </Window>

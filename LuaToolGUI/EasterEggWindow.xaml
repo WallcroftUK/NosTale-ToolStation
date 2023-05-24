@@ -1,0 +1,13 @@
+﻿<Window x:Class="LuaToolGUI.EasterEggWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuaToolGUI"
+        mc:Ignorable="d"
+        Title="Easter Egg" Height="400" Width="400">
+    <Grid>
+        <Image Source="/Images/eeafe33a8c244152ad6ae8158f180fe6.jpg" Stretch="Fill" />
+        <Label Content="Cepik Was Here" VerticalAlignment="Top" Width="284" Height="63" FontSize="36" Foreground="#FFF9F9F9" HorizontalAlignment="Center" FontWeight="Bold"/>
+    </Grid>
+</Window>

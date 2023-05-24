@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LuaToolGUI.enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,6 +14,8 @@ namespace LuaToolGUI
     {
         private TextBox luaCodeTextBox;
         private Dictionary<string, Tuple<string, string>> portalConnections;
+        public PortalType[] PortalTypes => Enum.GetValues(typeof(PortalType)) as PortalType[];
+        public MinimapOrientation[] MinimapOrientations => Enum.GetValues(typeof(MinimapOrientation)) as MinimapOrientation[];
 
         public PortalDetailsWindow(TextBox luaCodeTextBox, Dictionary<string, Tuple<string, string>> connections)
         {
@@ -43,7 +46,6 @@ namespace LuaToolGUI
             StringBuilder luaCode = new StringBuilder();
 
             // Get the portal properties from the input fields
-            string portalName = PortalNameTextBox.Text;
             string portalType = PortalTypeComboBox.Text;
             string fromMap = FromMapComboBox.SelectedValue.ToString();
             string fromX = FromXTextBox.Text;
@@ -53,8 +55,17 @@ namespace LuaToolGUI
             string toY = ToYTextBox.Text;
             string minimapOrientation = MinimapOrientationComboBox.Text;
 
+            // Extract the map coordinates from the fromMap and toMap values
+            string[] fromMapParts = fromMap.Split('_');
+            string[] toMapParts = toMap.Split('_');
+            string fromMapCoordinates = $"{fromMapParts[1]}_{fromMapParts[2]}";
+            string toMapCoordinates = $"{toMapParts[1]}_{toMapParts[2]}";
+
+            // Create the portal name based on the map coordinates
+            string portalName = $"portal_{fromMapCoordinates}_to_{toMapCoordinates}";
+
             // Create the Lua code for adding the portal
-            string portal = $"local {portalName} = Portal.Create((PortalType){portalType}).From({fromMap}, {fromX}, {fromY}).To({toMap}, {toX}, {toY}).MinimapOrientation((PortalMinimapOrientation){minimapOrientation})";
+            string portal = $"local {portalName} = Portal.Create(PortalType.{portalType}).From({fromMap}, {fromX}, {fromY}).To({toMap}, {toX}, {toY}).MinimapOrientation(PortalMinimapOrientation.{minimapOrientation})";
 
             // Append the Lua code to the text box
             luaCode.AppendLine(portal);
@@ -65,7 +76,6 @@ namespace LuaToolGUI
             luaCodeTextBox.Text += luaCode.ToString();
 
             // Clear the input fields
-            PortalNameTextBox.Clear();
             PortalTypeComboBox.SelectedIndex = 0;
             FromMapComboBox.SelectedIndex = 0;
             FromXTextBox.Clear();
@@ -75,6 +85,8 @@ namespace LuaToolGUI
             ToYTextBox.Clear();
             MinimapOrientationComboBox.SelectedIndex = 0;
         }
+
+
 
         private void PopulateButton_Click(object sender, RoutedEventArgs e)
         {

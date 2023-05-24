@@ -3,5 +3,7 @@
     FinishTimeSpace,
     TryStartTaskForMap,
     OpenPortal,
-    DespawnAllMobsInRoom
+    DespawnAllMobsInRoom,
+    RemoveTime,
+    AddTime,
 }

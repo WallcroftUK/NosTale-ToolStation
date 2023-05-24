@@ -1,6 +1,6 @@
 ﻿namespace LuaToolGUI.enums
 {
-    public enum PortalMinimapOrientation
+    public enum MinimapOrientation
     {
         North = 0,
         East = 1,

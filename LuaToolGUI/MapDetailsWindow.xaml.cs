@@ -130,11 +130,11 @@ namespace LuaToolGUI
             luaCodeTextBox.Text += luaCode.ToString();
 
             mapNames.Add(mapName); // Add the new map to the mapNames list
+        }
 
-            // Update the ItemsSource of the FromMapComboBox and ToMapComboBox
-            //CollectionViewSource.GetDefaultView(fromMapComboBox.ItemsSource).Refresh();
-            //CollectionViewSource.GetDefaultView(toMapComboBox.ItemsSource).Refresh();
-            //CollectionViewSource.GetDefaultView(spawnMapComboBox.ItemsSource).Refresh();
+        public void ClearCellStates()
+        {
+            cellStates.Clear();
         }
     }
 }
