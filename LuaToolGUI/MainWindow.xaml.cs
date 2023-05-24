@@ -25,6 +25,7 @@ namespace LuaToolGUI
         private AddMonstersWindow addMonstersWindow;
         private TimeSpaceWindow timeSpaceWindow;
         private EventWindow eventWindow;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -159,12 +160,17 @@ namespace LuaToolGUI
             // Clear the portalConnections dictionary
             portalConnections.Clear();
 
-            // Clear the cellStates dictionary
-            // Assuming you have an instance of the MapDetailsWindow called mapDetailsWindow
-            mapDetailsWindow.ClearCellStates();
+            // Clear the cellStates dictionary if mapDetailsWindow is not null
+            if (mapDetailsWindow != null)
+            {
+                mapDetailsWindow.ClearCellStates();
+            }
 
-            //Clear the events dictionary
-            eventWindow.CleanEvents();
+            // Clear the events dictionary if eventWindow is not null
+            if (eventWindow != null)
+            {
+                eventWindow.CleanEvents();
+            }
 
             // Clear the main Lua code textbox
             LuaCodeTextBox.Clear();
