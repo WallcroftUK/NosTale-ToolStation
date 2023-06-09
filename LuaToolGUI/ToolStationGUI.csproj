@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Windows\ConfigsTool\Functions\" />
+    <Folder Include="Windows\ConfigsTool\Entities\" />
     <Folder Include="Windows\ScriptConverter\Models\" />
     <Folder Include="Windows\ScriptConverter\Events\" />
     <Folder Include="Windows\ScriptConverter\Objects\" />
@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+    <PackageReference Include="YamlDotNet" Version="13.1.0" />
   </ItemGroup>
 
 </Project>
