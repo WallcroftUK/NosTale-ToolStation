@@ -39,7 +39,6 @@ namespace ToolStationGUI.Windows.ScriptConverter.Functions
                     File.WriteAllText(Path.Combine(raidsPath, (RaidType)model.Globals.Id.Value + ".lua"), model.ToRaidLuaString());
                     MessageBox.Show($"Created raid: {rType.ToString()}");
                 }
-                MessageBox.Show("Raids imported successfully!");
             }
             else if (TimeSpaceRadioButton.IsChecked == true)
             {
@@ -52,7 +51,6 @@ namespace ToolStationGUI.Windows.ScriptConverter.Functions
                     MessageBox.Show($"Created ts: {finalTitle}");
                     i++;
                 }
-                MessageBox.Show("Timespaces imported successfully!");
             }
             else
             {

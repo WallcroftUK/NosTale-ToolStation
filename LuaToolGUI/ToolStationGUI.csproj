@@ -7,22 +7,21 @@
     <UseWPF>true</UseWPF>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <ApplicationIcon>Images\logo.ico</ApplicationIcon>
-    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>none</DebugType>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="eeafe33a8c244152ad6ae8158f180fe6.jpg" />
     <None Remove="Images\bg.jpg" />
-    <None Remove="Images\logo.png" />
     <None Remove="Images\TsMaker\bg.jpg" />
+    <None Remove="Images\xmltolua.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +33,7 @@
     <Resource Include="Images\eeafe33a8c244152ad6ae8158f180fe6.jpg" />
     <Resource Include="Images\logo.png" />
     <Resource Include="Images\TsMaker\bg.jpg" />
+    <Resource Include="Images\xmltolua.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +46,13 @@
   <ItemGroup>
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     <PackageReference Include="YamlDotNet" Version="13.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

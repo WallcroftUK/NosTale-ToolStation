@@ -8,7 +8,7 @@
 
     <Grid>
         <!-- Background image -->
-        <Image Source="/Images/TsMaker/bg.jpg" Stretch="Fill" />
+        <Image Source="/Images/xmltolua.jpg" Stretch="Fill" />
 
         <Grid Height="419" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>

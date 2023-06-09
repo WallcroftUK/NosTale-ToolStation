@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToolStationGUI.Windows.ScriptConverter.Functions"
         mc:Ignorable="d"
-        Title="XmlToLuaWindow" Height="495" Width="540">
-    <Grid>
+        Title="XmlToLuaWindow" Height="508" Width="540">
+    <Grid Height="492" VerticalAlignment="Center">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/xmltolua.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
             <TextBox x:Name="XmlCodeTextBox" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Width="400" Height="200" Margin="0,0,0,20" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">

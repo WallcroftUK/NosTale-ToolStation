@@ -44,7 +44,7 @@
     <Grid>
         <!-- Background image -->
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/bg.jpg" />
+            <ImageBrush ImageSource="/Images/xmltolua.jpg" />
         </Grid.Background>
 
         <!-- Main container -->
