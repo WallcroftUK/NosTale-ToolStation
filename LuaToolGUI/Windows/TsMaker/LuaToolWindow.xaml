@@ -1,0 +1,64 @@
+﻿<Window x:Class="ToolGUI.Windows.TsMaker.LuaToolWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="TimeSpaceLuaTool" Height="566" Width="1082">
+
+    <Grid>
+        <!-- Background image -->
+        <Image Source="/Images/TsMaker/bg.jpg" Stretch="Fill" />
+
+        <Grid Height="419" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="108*" />
+                <ColumnDefinition Width="187*" />
+                <ColumnDefinition Width="525*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="LuaCodeTextBox" Margin="10,391,0,-92" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="4" HorizontalAlignment="Left" Width="1062" />
+            <ListBox x:Name="ObjectivesList" SelectionMode="Multiple" Margin="10,36,214,265" SelectionChanged="ObjectivesList_SelectionChanged" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedObjectives}" />
+
+            <Label Content="TimeSpaceObjectives" HorizontalAlignment="Left" TextElement.Foreground="White" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" Grid.ColumnSpan="2" RenderTransformOrigin="0.477,0.31" />
+
+            <Button x:Name="OpenTimeSpaceWindow" Content="Open TimeSpace Window" Click="OpenTimeSpaceWindow_Click"
+                    Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Width="143" HorizontalAlignment="Left" Margin="327,13,0,370" Grid.Column="2" />
+
+            <Button x:Name="OpenMapDetailsButton" Content="Open Map Details" Click="OpenMapDetailsButton_Click"
+                    Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Width="123" HorizontalAlignment="Left" Margin="82,13,0,370" Grid.Column="1" />
+
+            <Button x:Name="OpenPortalDetailsButton" Content="Open Portal Details" Click="OpenPortalDetailsButton_Click"
+                    HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Margin="213,13,0,370" Width="110" Grid.Column="1" Grid.ColumnSpan="2" />
+
+            <Button x:Name="OpenEventWindowButton" Content="Open Event Details" Click="OpenEventWindowButton_Click"
+                    HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Margin="103,13,0,370" Grid.Column="2" Width="108" />
+
+            <Button Content="Add Monsters" Click="AddMonstersButton_Click"
+                    HorizontalAlignment="Left" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Margin="224,13,0,370" Grid.Column="2" Width="91" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform AngleX="0" />
+                        <RotateTransform />
+                        <TranslateTransform X="0" />
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="CleanButton" Content="Clean" Margin="0,338,10,45"
+        Click="CleanButton_Click" HorizontalAlignment="Right"
+        Width="120" FontSize="16" Background="#CC0000" Foreground="White" Grid.Column="2" Grid.ColumnSpan="2" />
+
+            <Button x:Name="EasterEggButton" Content="" Click="EasterEggButton_Click" Grid.Column="3" Margin="52,0,0,410" />
+            <Image Grid.Column="2" HorizontalAlignment="Left" Height="214" Margin="59,54,0,0" VerticalAlignment="Top" Width="230" Source="/logo.png" Stretch="UniformToFill"/>
+            <Button Content="Back to Menu" Click="BackToMenuButton_Click" Background="#0078D7" Foreground="White" BorderBrush="#0078D7" BorderThickness="2"
+                    Padding="10" FontSize="10" Margin="585,13,10,370" Grid.Column="2" Grid.ColumnSpan="2" />
+
+        </Grid>
+    </Grid>
+</Window>

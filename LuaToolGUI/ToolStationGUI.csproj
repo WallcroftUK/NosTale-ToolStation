@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <ApplicationIcon>Images\logo.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="eeafe33a8c244152ad6ae8158f180fe6.jpg" />
+    <None Remove="Images\bg.jpg" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\TsMaker\bg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\bg.jpg" />
+    <Resource Include="Images\eeafe33a8c244152ad6ae8158f180fe6.jpg" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\TsMaker\bg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Windows\ConfigsTool\Functions\" />
+    <Folder Include="Windows\ScriptConverter\Models\" />
+    <Folder Include="Windows\ScriptConverter\Events\" />
+    <Folder Include="Windows\ScriptConverter\Objects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+  </ItemGroup>
+
+</Project>

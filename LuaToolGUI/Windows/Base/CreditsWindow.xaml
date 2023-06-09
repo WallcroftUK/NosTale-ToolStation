@@ -1,0 +1,42 @@
+﻿<Window x:Class="ToolGUI.Windows.Base.CreditsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Credits" Height="400" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <!-- Background gradient -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Offset="0" Color="#FF1D1D1D" />
+                <GradientStop Offset="1" Color="#FF262626" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Main container -->
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Logo image -->
+            <Image Source="/Images/logo.png" Width="150" HorizontalAlignment="Center" Margin="0,-30,0,0" />
+
+            <!-- Title -->
+            <TextBlock Text="Credits" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,90,0,13" HorizontalAlignment="Center" Grid.RowSpan="2" />
+
+            <!-- Contributors -->
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,10">
+                <TextBlock Text="Contributors:" FontSize="18" FontWeight="Bold" Foreground="White" Margin="0,0,0,10" />
+                <TextBlock Text="ZroIsDead" FontSize="14" Foreground="White" />
+                <!--<TextBlock Text="Jane Smith" FontSize="14" Foreground="White" />
+                <TextBlock Text="Alex Johnson" FontSize="14" Foreground="White" />
+                Add more contributors here -->
+            </StackPanel>
+
+            <!-- Close button -->
+            <Button Content="Close" Width="100" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Background="#CC0000" Foreground="White" Click="CloseButton_Click" Grid.Row="2" />
+        </Grid>
+    </Grid>
+</Window>
