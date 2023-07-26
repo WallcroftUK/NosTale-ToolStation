@@ -24,7 +24,7 @@ Whether you're a game developer, modder, or enthusiast, LuaTimeSpaceTool empower
 - ☑️ Every Function has its own Window (functions that exist have their own windows)
 - ❌ Saving directly to file with name (currently using a TextBox)
 - ❌ Usage as TimeSpace/Raid script maker
-- ❌ Converting packets to TimeSpace (will be added in V.1.3 so i think next update)
+- ☑️ Converting packets to TimeSpace (will be added in V.1.3 so i think next update)
 - ❌ Clean code (can be further improved)
 - ❔ Improved UI/UX: Continuously enhance the user interface and user experience of the tool by refining layouts, adding intuitive controls, and optimizing workflows.
 - ❔ Code refactoring and optimization: Regularly review and refactor the codebase to improve its structure, readability, and performance. Consider optimizing resource usage and eliminating any unnecessary dependencies.
